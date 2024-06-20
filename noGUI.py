@@ -30,22 +30,33 @@ def updateGuess(letter,word,guessedSoFar):
 
 
 def main():
+    wl = word_list()
     cont = True
-    chances = 6
     while cont:
-        word = chooseWord(requestLetterCap(),word_list())
-        guessedSoFar = _ *len(word)
+        lettercap = requestLetterCap()
+        word = chooseWord(lettercap,wl)
+        guessedSoFar = '_' * len(word)
+        chances = 6
+
         print("Welcome to Hangman! You have to guess the word. You have 6 chances left")
-        chosenLetter = char(input("Please enter a letter"))
+        
+        while chances > 0 and '_' in guessedSoFar:
+            print(guessedSoFar)
+            print(f"You have {chances} chances left.")
+            chosenLetter = input("Please enter a letter")[0]
+
         if(checkLetter(checkLetter, word)):
+            print("That letter is in the word")
             guessedSoFar = updateGuess(chosenLetter,word, guessedSoFar)
-        if(word == guessedSoFar): 
-            cont = False
-            print ("You have guessed correctly")
-        if(chances == 6):
-            cont = False
+            if(word == guessedSoFar): 
+                print ("You have guessed correctly! The word was: ", word)
+        else:
+            print("That letter is not in the word")
+            chances -=1
+        if chances == 0:    
             print("You have run out of chances. The word was " + word)
+        
+        cont = input("Do you want to play again? (yes/no) :").lower() == "yes"
 
-
-    main()
-    print("Hello wrld")
+    
+main()
