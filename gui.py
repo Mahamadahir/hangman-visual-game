@@ -1,4 +1,5 @@
 import pygame
+import time
 pygame.init()
 
 HEIGHT = pygame.display.Info().current_h
@@ -26,10 +27,26 @@ def createGrid():
     pygame.draw.rect(SCREEN,(255, 0, 0), rectB)
     pygame.draw.rect(SCREEN, (0, 255, 0), rectC)
     
+def sectionA(word):
+    wordlen = len(word)
+    availableSpaceX = int(0.7*WIDTH)
+    availableSpaceY = int(0.4*HEIGHT)
+    for i in range(1,20):
+        createGrid()
+        usedSpace = pygame.draw.rect(SCREEN,(0,0,0), (0,0,int(availableSpaceX/i), int(availableSpaceY/i)))
+        pygame.display.update()
+        print(str(availableSpaceX/i) +" X " +str(availableSpaceY/i))
+        time.sleep(5)
+    #wordMutable = list(word)
+    #for letter in wordMutable:
+        #if letter == '_':
+        
 
+    
+    
 def createScreen():
     SCREEN.fill(COLOUR)
-    createGrid()
+    sectionA("aaaaaaaaaaaaaaaaaaaa")
     pygame.display.update()
 
 
