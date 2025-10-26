@@ -8,5 +8,7 @@ A graphical hangman game built using Python utilisng Pygame for a fun and intera
 -Dimensions are shown in image
 -Going to change from pygame to tkiner
 
+-This project has been done in java instead!
+
 
 
